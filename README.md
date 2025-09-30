@@ -8,17 +8,20 @@ RustyBoot-RISC-V is a **minimalist, modular bootloader for RISC-V platforms**, i
 
 ---
 
-## Features (Planned / Initial)
+## Features (Implemented / Planned)
 
-- Bare-metal RISC-V `_start()` entry point
+**Implemented**
+- Bare-Metal RISCV `_start()` entry point
 - UART driver for early debug output
+- Minimal ELF kernel loader
+- Bootloader skeleton structure
+  
+**Planned**
 - Memory manager with frame allocator
 - Block device abstraction (virtio for QEMU, SD card support)
-- MBR/GPT partition parsing
+- MBR/GPT partitioning parsing
 - EXT2/3/4 filesystem support
-- ELF kernel loading
-- Clean modular Rust architecture
-- QEMU-compatible for easy testing
+- kernel loading from disk
 
 ---
 
@@ -34,7 +37,7 @@ RustyBoot-RISC-V is a **minimalist, modular bootloader for RISC-V platforms**, i
 
 ```bash
 # Build the bootloader
-cargo xbuild --target riscv64-bootloader.json
+cargo build --target riscv64imac-unknown-none-elf
 ```
 
 ### Run in QEMU
@@ -44,7 +47,8 @@ qemu-system-riscv64 \
     -machine virt \
     -nographic \
     -bios none \
-    -kernel target/riscv64imac-unknown-none-elf/debug/rustyboot-riscv
+    -kernel target/riscv64imac-unknown-none-elf/debug/rustyboot-riscv \
+    -serial mon:stdio
 ```
 
 -You should see UART output in the terminal indicating boot progress.

@@ -3,6 +3,7 @@
 #![feature(asm)]
 
 mod block;
+mod bootloader;
 mod elf;
 mod fs;
 mod memory;
@@ -17,6 +18,8 @@ pub extern "C" fn _start() -> ! {
     uart::init();
 
     uart::println("=== RustyBoot-RISCV ===");
+
+    bootloader::load_kernel();
 
     loop {}
 }

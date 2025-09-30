@@ -51,17 +51,20 @@ qemu-system-riscv64 \
 
 ### Project Structure
 
+```
 RustyBoot-RISCV/
+
 ├── src/
-│   ├── main.rs           # Entry point
-│   ├── panic.rs          # Panic handler
-│   ├── uart/             # UART driver
-│   ├── memory/           # Memory manager
-│   ├── block/            # Block device drivers
-│   ├── fs/               # Filesystem support
-│   └── elf/              # ELF kernel loader
-├── linker.ld             # RISC-V linker script
-└── boot/                 # Dummy kernel for testing
+│   ├── main.rs
+│   ├── panic.rs
+│   ├── uart/
+│   ├── memory/
+│   ├── block/
+│   ├── fs/
+│   └── elf/
+├── linker.ld
+└── boot/               
+```
 
 ### Contributing
 

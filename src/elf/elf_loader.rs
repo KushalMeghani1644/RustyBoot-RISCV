@@ -4,7 +4,7 @@ use core::ptr;
 
 #[repr(C)]
 pub struct Elf64Header {
-    dent: [u8; 16],
+    e_ident: [u8; 16],
     pub e_type: u16,
     pub e_machine: u16,
     pub e_version: u32,

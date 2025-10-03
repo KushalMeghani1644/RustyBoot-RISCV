@@ -45,9 +45,3 @@ pub extern "C" fn _start() -> ! {
     // Should never reach here.
     loop {}
 }
-
-#[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
-    uart::println("PANIC!");
-    loop {}
-}

@@ -77,7 +77,7 @@ fn mmio_write32(offset: usize, v: u32) {
     unsafe { write_volatile((VIRTIO_MMIO_BASE + offset) as *const u32, v) }
 }
 
-fn mmio_read64(offset: usize) -> u32 {
+fn mmio_read64(offset: usize) -> u64 {
     let low = mmio_read32(offset) as u64;
     let high = mmio_read32(offset + 4) as u64;
     (high << 32) | low

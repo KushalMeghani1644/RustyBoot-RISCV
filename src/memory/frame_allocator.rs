@@ -49,7 +49,7 @@ fn is_frame_free(index: usize) -> bool {
 
 /// Allocate one frame, return physical address
 pub fn allocate_frame() -> Option<usize> {
-    for 1 in 0..FRAME_COUNT {
+    for i in 0..FRAME_COUNT {
         if is_frame_free(i) {
             set_frame(i);
             return Some(MEMORY_START + 1 * PAGE_SIZE);

@@ -22,14 +22,14 @@ pub extern "C" fn _start() -> ! {
 
     // Init memory/frame allocator
     uart::println("Init memory");
-    frame_allocator::reserve_region(0x8000_0000, 0x8100_0000); // Reserve bootloader & low memory
+    frame_allocator::reserved_region(0x8000_0000, 0x8100_0000); // Reserve bootloader & low memory
     uart::println("Memory reserved for bootloader");
 
     // Allocate some text frames
     uart::println("Allocating test frames");
     for _ in 0..5 {
         if let Some(frame) = frame_allocator::allocate_frame() {
-            uart::prinln("Allocated frame at 0x{:x}", frame);
+            uart::println("Allocated frame at 0x{:x}", frame);
         } else {
             uart::println("Out of memory");
         }

@@ -29,7 +29,7 @@ pub extern "C" fn _start() -> ! {
     uart::println("Allocating test frames");
     for _ in 0..5 {
         if let Some(frame) = frame_allocator::allocate_frame() {
-            uart::println("Allocated frame at 0x{:x}", frame);
+            uart::println("Allocated frame at 0x{:x}");
         } else {
             uart::println("Out of memory");
         }
